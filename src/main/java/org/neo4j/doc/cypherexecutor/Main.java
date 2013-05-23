@@ -108,7 +108,7 @@ public class Main
         writeToFile( targetDir, normalizedName + ".graph.asciidoc",
                 graphvizSnippet );
 
-        String consoleSnippet = createConsoleSnippet( database, query );
+        String consoleSnippet = createConsoleSnippet( query, database );
         writeToFile( targetDir, normalizedName + ".console.asciidoc",
                 consoleSnippet );
 
@@ -124,8 +124,8 @@ public class Main
         FileUtils.writeStringToFile( file, content, ENCODING );
     }
 
-    private static String createConsoleSnippet( GraphDatabaseService database,
-            String query )
+    private static String createConsoleSnippet( String query,
+            GraphDatabaseService database )
     {
         String setup = new GeoffService( database ).toGeoff();
         return createConsole( query, setup );
